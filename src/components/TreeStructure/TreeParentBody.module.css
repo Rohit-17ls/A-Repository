@@ -1,0 +1,14 @@
+.treeparentbody{
+    margin:10vh 4% 10vh 4%;
+    background: linear-gradient(-80deg, rgba(171, 186, 171, 0.801), rgba(171, 186, 171, 0.603));
+    width:92%;
+    height:fit-content;
+    border-radius: 0.5em;
+    /* border: 0.4em solid;
+    border-image: linear-gradient(to right, rgb(230, 92, 0), rgb(249, 212, 35));
+    border-image-slice:1; */
+    box-shadow:0px 1px 9px 0px;
+    padding:1em;
+
+
+}

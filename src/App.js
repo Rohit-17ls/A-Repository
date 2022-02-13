@@ -1,56 +1,48 @@
 import React, { useState } from 'react';
+import Navbar from './components/UI/Navbar';
+import TreeParentBody from './components/TreeStructure/TreeParentBody';
+import TreeRow from './components/TreeStructure/TreeRow';
+import TreeSandwich from './components/TreeStructure/TreeSandwich';
+// import classes from './TreeNodePair.module.css';
 
-import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
-import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
-import './App.css';
 
 const App = () => {
-  const [courseGoals, setCourseGoals] = useState([
-    { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' }
-  ]);
+  
+  const [rows, setRows] = useState([0,1]);
+  const [nullState, setNullState] = useState("Show");
+  const [nullVisibility, setNullVisibility] = useState('');
 
-  const addGoalHandler = enteredText => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
-      return updatedGoals;
-    });
-  };
+  const addRow = () => {
+    console.log("Hello");
+    if(rows.length<5){
 
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      return updatedGoals;
-    });
-  };
+      setRows(prevState => [...rows, rows.at(rows.length-1)*2])
+    }
+  }
 
-  let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-  );
+  const toggleNullState = () => {
+    let newState = nullState==="Show" ? "Hide" : "Show";
+    setNullState(newState);
 
-  if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
+    if(nullState === "Show"){
+      console.log("Hello");
+    }else if(nullState === "Hide"){
+      console.log("Hello World");
+
+    }
   }
 
   return (
-    <div>
-      <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
-      </section>
-      <section id="goals">
-        {content}
-        {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
-          />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
-      </section>
-    </div>
+    <>
+      <Navbar addRow={addRow} toggleNullState={toggleNullState} nullState={nullState}/>
+      <TreeParentBody>
+        {/* <TreeRow></TreeRow> */}
+        {rows.map(x => <><TreeRow key={Math.random()*1000} pairs={x}/><TreeSandwich pairs={x} endif={rows.at(rows.length-1)}/></>)}
+      </TreeParentBody>
+
+     
+
+    </>
   );
 };
 

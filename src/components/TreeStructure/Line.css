@@ -1,0 +1,20 @@
+line{
+    stroke:black;
+}
+
+svg #Right{
+    transform:rotate(-45deg);
+    
+}
+
+svg #Left{
+    transform:rotate(45deg);
+}
+
+.--arrow-holder{
+    /* background-color: rgba(255, 0, 0, 0.233); */
+    height:fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

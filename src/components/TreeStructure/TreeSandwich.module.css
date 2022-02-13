@@ -1,0 +1,8 @@
+.sandwich{
+    width:100%;
+    height:fit-content;
+    /* background: grey; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

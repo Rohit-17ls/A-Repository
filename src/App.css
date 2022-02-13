@@ -12,3 +12,9 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

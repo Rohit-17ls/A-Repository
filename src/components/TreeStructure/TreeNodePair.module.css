@@ -1,0 +1,24 @@
+.pair{
+    /* background-color: blue; */
+    height:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+    /* border: 2px solid black; */
+    
+}
+
+
+
+.singlenode{
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    /* border: 2px solid black; */
+
+
+}

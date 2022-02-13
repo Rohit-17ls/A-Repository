@@ -1,0 +1,17 @@
+.row{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height:fit-content;
+    /* background-color: brown; */
+    align-items:center;
+    /* margin:5% 0 5% 0; */
+}
+
+.firstrow{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;;
+}
