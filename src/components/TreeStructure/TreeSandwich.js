@@ -15,7 +15,7 @@ const TreeSandwich = (props) => {
     return (
         
         <div className={classes.sandwich}>
-            {props.endif != props.pairs && [...Array(arrows)].map((i,e) => <Line width={100/props.pairs} exceptRoot={props.exceptRoot}></Line>)}
+            {props.endif !== props.pairs && [...Array(arrows)].map((i,e) => <Line width={100/props.pairs} exceptRoot={props.exceptRoot}></Line>)}
         </div>
 
     )
