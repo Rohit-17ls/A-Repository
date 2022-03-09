@@ -1,18 +1,23 @@
 .node{
- background: linear-gradient(to right, rgb(241, 39, 17), rgb(245, 175, 25));
+ background: linear-gradient(to bottom, rgba(13,178,228,1) 40%, rgba(22,110,135,1) 89%);;
  border-radius: 100vh;
  width:3rem;
  height:fit-content;
  padding: 1rem;   
  text-align: center;
- /* font-family: 'Crete Round', serif; */
-
  font-weight:bolder;
  border:none;
  outline:none;
  overflow-x: visible;
+ box-shadow: 0 0 2px 3px transparent;
  
 
+ 
+
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 input::-webkit-outer-spin-button,
@@ -22,11 +27,12 @@ input::-webkit-inner-spin-button {
 }
 
 ::placeholder{
-    color:rgba(0, 0, 0, 0.367);
+    /* color:rgba(0, 0, 0, 0.367); */
+    color:black;
 }
 
 input:focus{
-  box-shadow: 0 0 2px 4px black;
+  box-shadow: 0 0 2px 3px white;
   /* background: linear-gradient(to bottom, rgb(241, 39, 17), rgb(245, 175, 25)); */
 
 }

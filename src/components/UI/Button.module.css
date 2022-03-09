@@ -1,19 +1,21 @@
 .button{
-    background: linear-gradient( -45deg, rgb(241, 39, 17), rgb(245, 175, 25), rgb(245, 175, 25) );
+    background: linear-gradient(157deg,#000, #072026);
     border-radius: 1em;
-    font-family: 'Crete Round', serif;
+    /* font-family: 'Crete Round', serif; */
     padding:1em;
-    box-shadow: 0px 0px 4px 4px black;
+    color:white;
+    font-weight: bold;
+    box-shadow: 0px 0px 2px 2px white;
     outline: none;
     border: none;
+    transition: background 2s ease-in-out;
 }
 
-    .button:hover{
-        /* color:white; */
-        background: linear-gradient( 45deg, rgb(241, 39, 17), rgb(245, 175, 25), rgb(245, 175, 25) );
-    }
-
+.button:hover{
+    /* color:#072026; */
+    background: linear-gradient(to bottom, #05688a, #00b4db, #05688a);
+}
     .button:active{
-        background: linear-gradient( 180deg, rgb(241, 39, 17), rgb(245, 175, 25), rgb(245, 175, 25) );
+        background: linear-gradient(to bottom, #00b4db, #0083b0);
 
     }

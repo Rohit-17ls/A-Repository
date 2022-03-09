@@ -29,9 +29,25 @@
     -->
     <title>React App</title>
   </head>
-  <body>
+  <body style="background: linear-gradient(to right, #05080e, #05090e);; height:100%">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <script>
+      document.querySelectorAll(`a[href^="#"]`).forEach(anchor => {
+        anchor.addEventListener("click", function(e){
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behaviour:"smooth"
+          });
+        });
+          
+      });
+    
+
+      
+      
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

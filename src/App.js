@@ -3,168 +3,201 @@ import Navbar from './components/UI/Navbar';
 import TreeParentBody from './components/TreeStructure/TreeParentBody';
 import TreeRow from './components/TreeStructure/TreeRow';
 import TreeSandwich from './components/TreeStructure/TreeSandwich';
+import Message from './components/UI/Message';
+import Dashboard from './components/UI/Dashboard';
+import UserConsole from './components/UI/UserConsole';
+import {func} from './Logic/TreeMethods'
+
+
 // import { ThemeConsumer } from 'styled-components';
 // import classes from './TreeNodePair.module.css';
 
 
+
+
+export let tree = {
+  'node-0-0': { parent: null, show: true, value: 0, left: '1-0', right: '1-1', error: 0 },
+    'node-1-0': { parent: '0-0', show: true, value: 0,  left: '2-0',  right: '2-1', error: 0 },
+    'node-1-1': { parent: '0-0', show: true, value: 0,  left: '2-2',  right: '2-3', error: 0 },
+    'node-2-0': { parent: '1-0', show: true, value: 0,  left: '3-0',  right: '3-1', error: 0 },
+    'node-2-1': { parent: '1-0', show: true, value: 0,  left: '3-2',  right: '3-3', error: 0 },
+    'node-2-2': { parent: '1-1', show: true, value: 0,  left: '3-4',  right: '3-5', error: 0 },
+    'node-2-3': { parent: '1-1', show: true, value: 0,  left: '3-6',  right: '3-7', error: 0 },
+    'node-3-0': { parent: '2-0', show: true, value: 0,  left: '4-0',  right: '4-1', error: 0 },
+    'node-3-1': { parent: '2-0', show: true, value: 0,  left: '4-2',  right: '4-3', error: 0 },
+    'node-3-2': { parent: '2-1', show: true, value: 0,  left: '4-4',  right: '4-5', error: 0 },
+    'node-3-3': { parent: '2-1', show: true, value: 0,  left: '4-6',  right: '4-7', error: 0 },
+    'node-3-4': { parent: '2-2', show: true, value: 0,  left: '4-8',  right: '4-9', error: 0 },
+    'node-3-5': { parent: '2-2', show: true, value: 0, left: '4-10', right: '4-11', error: 0 },
+    'node-3-6': { parent: '2-3', show: true, value: 0, left: '4-12', right: '4-13', error: 0 },
+    'node-3-7': { parent: '2-3', show: true, value: 0, left: '4-14', right: '4-15', error: 0 },
+    'node-4-0': { parent: '3-0', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-1': { parent: '3-0', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-2': { parent: '3-1', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-3': { parent: '3-1', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-4': { parent: '3-2', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-5': { parent: '3-2', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-6': { parent: '3-3', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-7': { parent: '3-3', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-8': { parent: '3-4', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-9': { parent: '3-4', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-10': { parent: '3-5', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-11': { parent: '3-5', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-12': { parent: '3-6', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-13': { parent: '3-6', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-14': { parent: '3-7', show: true, value: 0, left: null, right: null, error: 0 },
+    'node-4-15': { parent: '3-7', show: true, value: 0, left: null, right: null }
+  }
+  
+  let indices = ['node-1-0', 'node-1-1', 'node-2-0', 'node-2-1', 'node-2-2', 'node-2-3', 'node-3-0', 'node-3-1', 'node-3-2', 'node-3-3', 'node-3-4', 'node-3-5', 'node-3-6', 'node-3-7', 'node-4-0', 'node-4-1', 'node-4-2', 'node-4-3', 'node-4-4', 'node-4-5', 'node-4-6', 'node-4-7', 'node-4-8', 'node-4-9', 'node-4-10', 'node-4-11', 'node-4-12', 'node-4-13', 'node-4-14', 'node-4-15'];
+  
+  let root = {
+    parent : null,
+    id : 'node-0-0',
+    value : 0,
+    left : '00',
+    right : '01'
+  }
+let rootId = 'node-0-0';
+let lastUnbalancedNode = null;
+
+let nodeIds = ['node1'];
+
+let treeheight = 1;
+// let nodeRank = 0;
+let currentHeightNodes = [];
+
+
 const App = () => {
   
-  class TreeNode{
-    constructor(value){
-      this.value = value;
-      this.descendants = [];
-      this.parent = null;
-    }
-
-    get left(){
-      return this.descendants[0];
-    }
-
-    set left(node){
-      this.descendants[0] = node;
-      if(node){
-        node.parent = this;
-      }
-    }
-
-    get right(){
-      return this.descendants[1];
-    }
-
-    set right(node){
-      this.descendants[1] = node;
-      if(node){
-        node.parent = this;
-      }
-    }
-  }
-
-  let root = new TreeNode({parent:null, id:'node1'});
-  let rootId = 'node1';
-  // root.descendants.push(null);
-
   
-
-  const [rows, setRows] = useState([0,1]);
-  const [nullState, setNullState] = useState("Show");
+  
+  
+  
+  
+  // const [rows, setRows] = useState([0,1]);
+  const [nullState, setNullState] = useState("Hide");
   const [nullVisibility, setNullVisibility] = useState('');
-  const [currentLevel, setCurrentLevel] = useState(root);
-  const [currentParent, setCurrentParent] = useState(root);
-
-  // let currentParent = root;
-  let currentChild = 0;
+  const [consoleMessage, setConsoleMessage] = useState([0,'']);
+  const [height, setHeight] = useState([0,1]);
+  const [dummy, setDummy] = useState(0);
+  let currentPair = [0,1];
+  let  nodes = 0;
+  console.log("Hi");
+  // const [currentPair, setCurrentPair] = useState([0,1]);
+  // const [tree, setTree] = useState([]);
   
-  // const [nodeIds, setNodeIds] = useState(['node1']);
-  let nodeIds = ['node1'];
-  let currentDepth = 0;
-  let currentHeight = 1;
-  let proxyParent = root;
-  let futureParents = [];
-  // const [tree, setTree] = useState(root);
+  
+  // let tree = [];
   
   
   
   // const left = 0;
-  
-  
-  // const right = 1;
+
+  if(lastUnbalancedNode){
+      let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
+      console.log(element);
+      element.style.background = 'red'; 
+  }
 
 
-  const getId = () => {
-    let newId ;
-    
-    do{
-      newId = parseInt(Math.random()*1000);
-    }while(nodeIds.includes(`node${newId}`));
-    
-    return newId;
+  const swap = (i,j) => {
+    if(i<j){
+      console.log(i,j);
+      const temp = tree[indices[j]].value;
+      console.log('temp', temp);
+      tree[indices[j]].value =  tree[indices[i]].value;
+      tree[indices[i]].value = temp;
+      swap(i+1, j-1);
+    }
   }
   
-  const setId = () => {
-    // let newId = nodeIds.at(nodeIds.length-1);
-    // while(!nodeIds.includes(`node${newId}`)){
-    //   newId = Math.floor((Math.random())*1000);
-    // }
-    
-    
-    let id1, id2;
-    id1 = getId();
-    id2 = getId();
-    
-    nodeIds.push(`node${id1}`, `node${id2}`);
-    
-    // console.log(nodeIds);
-
-    if(rows.length === 2){
-      let leftChild = new TreeNode({parent:currentParent, id: `node${id1}`});
-      let rightChild = new TreeNode({parent:currentParent, id: `node${id2}`});
-      // currentParent.descendants.push(leftChild, rightChild);
-      console.log("Proxy Parent  ",proxyParent);
-      proxyParent.descendants.push(leftChild, rightChild);
-      proxyParent = [...proxyParent.descendants];
-      // setCurrentParent(proxyParent);
-    }else{
-      
-      console.log("Current Parent After: ",proxyParent);
-      let leftChild = new TreeNode({parent:proxyParent[currentChild], id: `node${id1}`});
-      let rightChild = new TreeNode({parent:proxyParent[currentChild], id: `node${id2}`});
-      // proxyParent[currentChild].descendants.push(leftChild, rightChild);
-      // console.log("Current Parents [] : ", proxyParent[currentChild], currentChild);
-      proxyParent[currentChild].descendants.push(leftChild, rightChild);
-      currentChild++;
-      futureParents.push(leftChild, rightChild);
-      // setCurrentParent(proxyParent);
+  
+  const invertBinaryTree = () => {
+    console.log(tree);
+    for(let i=0; i<(height.length); i+=2){
+      swap(i,(2*i)+1);
     }
+    console.log(tree);
+    setDummy(prevState =>  !prevState);
+    
+    // return App();
+  }
+  
 
-
-    // console.log("Current Parent Before: ",currentParent);
-    // console.table(currentParent);
-    // }else{
-    //   currentParent.foreach(x => x.descendants.push)
-    // }
-    return [`node${id1}`, `node${id2}`];
-
-  }  
+  const setId = () => {
+    let a = indices[currentPair[0]]; 
+    let b = indices[currentPair[1]];
+    // console.log(tree[a], tree[b]);
+    // console.log(a,b);
+    let res = [a, b, tree[a].show, tree[b].show, tree[a].value, tree[b].value];
+    currentPair = currentPair.map(x => x+2);
+    nodes+=2
+    // console.log("Current Pair " ,currentPair);
+    // console.log(res);
+    return res;
+  }
   
 
   const addRow = () => {
-    // console.log("Hello");
-    if(rows.length<5){
+   
+    setHeight(prevState => [...height, height.at(height.length-1)*2]);
+    currentPair = [0,1];
 
-      setRows(prevState => [...rows, rows.at(rows.length-1)*2]);
-      if(rows.length>3){
-        proxyParent = [...futureParents];
-        futureParents = [];
-      }
-    }
 
   }
 
   const toggleNullState = () => {
     let newState = nullState==="Show" ? "Hide" : "Show";
-    setNullState(newState);
-
-    if(nullState === "Show"){
-      console.log("Hello");
-    }else if(nullState === "Hide"){
-      console.log("Hello World");
-
+    for(let i=0; i<nodes; i++){
+      if(!tree[indices[i]].value){
+        tree[indices[i]].show = false;
+      }
     }
+    setNullState(newState);
+    console.log(tree);
+
+  
   }
 
   const inputChangeHandler = (event) => {
     // console.log(event.target.value);
     let x = event.target;
     // console.log(x.dataset.id);
+    tree[x.dataset.id].value = event.target.value;
+    // console.log(tree.map(i => i.value));
+    
+  }
+
+  const InorderTraversal = (opt) => {
+    // console.log("Hey");
+    let res = func(opt);
+    if(!res[0]){
+      setConsoleMessage([0, "Please Balance the Tree !!!"]);
+      lastUnbalancedNode = res[1]-1;
+      // tree[indices[lastUnbalancedNode]].error = 1;
+      console.log(indices[lastUnbalancedNode]);
+      
+      
+      
+    }else{
+      // tree[indices[lastUnbalancedNode]].error = 0;
+      res[1] = res[1].toString();
+      setConsoleMessage(res);
+      // document.querySelector(`div[data-id='${indices[lastUnbalancedNode]}']`).style.border = '0px';
+    }
   }
 
   return (
     <>
-      <Navbar addRow={addRow} toggleNullState={toggleNullState} nullState={nullState}/>
+      <Navbar addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
       <TreeParentBody>
+        <Message message={'Please provide non-zero values for each node (Nodes with 0 value will be treated as null) and also do balance the Binary Tree'}/>
         {/* <TreeRow></TreeRow> */}
-        {rows.map(x => <><TreeRow currentLevel={currentLevel} rootNode={root} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={rows.at(rows.length-1)}/></>)}
+        {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
+      <Dashboard InorderTraversal={InorderTraversal} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
+      <UserConsole message={consoleMessage}/>
 
      
 

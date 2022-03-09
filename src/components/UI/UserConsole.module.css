@@ -1,0 +1,66 @@
+.console{
+    /* background: white; */
+    height:fit-content;
+    width:  70%;
+    padding: 1vmax;
+    /* background-color : #06182c; */
+    background: radial-gradient(#072026, #06182c);
+    color:white;
+    font-family:consolas;
+    z-index:1;
+    border: 0.2px solid #8095ff;
+    border-radius: 1vmax;
+    
+}
+
+.consoleHolder{
+    width:100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top : 2vmax;
+}
+
+.console::selection{
+    background: rgba(255, 255, 255, 0.359);
+}
+
+.consoleHolder::selection{
+    background: rgba(255, 255, 255, 0.359);
+}
+
+.consoleHeader{
+    width:95%;
+    height:fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.consoleHeader button{
+    border: 0;
+    border-radius:0;
+    background: transparent;
+    color:white;
+}
+
+.consoleHeader button:hover{
+    color:grey;
+}
+
+.consoleHeader button:active{
+    color: #0dcaf0;
+}
+
+pre{
+    margin-left : 4%;
+    font-weight:500;
+}
+
+pre::selection{
+    background: rgba(255, 255, 255, 0.359);
+
+}

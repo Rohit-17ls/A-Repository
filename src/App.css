@@ -18,3 +18,8 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+
+html:focus-within{
+  scroll-behavior: smooth;
+}
