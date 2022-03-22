@@ -15,9 +15,9 @@ const Dashboard = (props) => {
             </div>
 
             <div className={classes.dashboardControls}>
-                <a href="#userConsole"><Button type="button" onClick={() => {props.InorderTraversal(1)}}>Inorder Traversal</Button></a>
-                <a href="#userConsole"><Button type="button" onClick={() => {props.InorderTraversal(2)}}>Preorder Traversal</Button></a>
-                <a href="#userConsole"><Button type="button" onClick={() => {props.InorderTraversal(3)}}>Postorder Traversal</Button></a>
+                <a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(1)}}>Inorder Traversal</Button></a>
+                <a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(2)}}>Preorder Traversal</Button></a>
+                <a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(3)}}>Postorder Traversal</Button></a>
             </div>
             
         </section>

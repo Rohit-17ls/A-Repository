@@ -7,6 +7,7 @@ import Message from './components/UI/Message';
 import Dashboard from './components/UI/Dashboard';
 import UserConsole from './components/UI/UserConsole';
 import {func} from './Logic/TreeMethods'
+import { CDriverCode } from './Logic/CDriver';
 
 
 // import { ThemeConsumer } from 'styled-components';
@@ -81,6 +82,7 @@ const App = () => {
   const [consoleMessage, setConsoleMessage] = useState([0,'']);
   const [height, setHeight] = useState([0,1]);
   const [dummy, setDummy] = useState(0);
+  const [loading, setLoading] = useState(false);
   let currentPair = [0,1];
   let  nodes = 0;
   console.log("Hi");
@@ -95,9 +97,10 @@ const App = () => {
   // const left = 0;
 
   if(lastUnbalancedNode){
-      let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
-      console.log(element);
-      element.style.background = 'red'; 
+    console.log(lastUnbalancedNode)
+    console.log(element);
+    let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
+    element.style.background = 'red'; 
   }
 
 
@@ -169,18 +172,26 @@ const App = () => {
     
   }
 
-  const InorderTraversal = (opt) => {
+  const treeActionFunction = async(opt) => {
     // console.log("Hey");
-    let res = func(opt);
+    setLoading(true);
+    let res = await func(opt);
+    console.log("result",);
     if(!res[0]){
+      setLoading(false);
       setConsoleMessage([0, "Please Balance the Tree !!!"]);
       lastUnbalancedNode = res[1]-1;
       // tree[indices[lastUnbalancedNode]].error = 1;
       console.log(indices[lastUnbalancedNode]);
+      let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
+      // element.style.background = 'red';
+      element.classList.add('errorNode');
+      console.log(element);
       
       
       
     }else{
+      setLoading(false);
       // tree[indices[lastUnbalancedNode]].error = 0;
       res[1] = res[1].toString();
       setConsoleMessage(res);
@@ -188,16 +199,18 @@ const App = () => {
     }
   }
 
+  CDriverCode();
+
   return (
     <>
       <Navbar addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
+      <UserConsole message={consoleMessage} loading={loading}/>
       <TreeParentBody>
         <Message message={'Please provide non-zero values for each node (Nodes with 0 value will be treated as null) and also do balance the Binary Tree'}/>
         {/* <TreeRow></TreeRow> */}
         {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
-      <Dashboard InorderTraversal={InorderTraversal} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
-      <UserConsole message={consoleMessage}/>
+      <Dashboard treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
 
      
 

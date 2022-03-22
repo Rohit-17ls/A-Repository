@@ -49,7 +49,7 @@ export const func = (opt) => {
             
         }
 
-        PreorderTraversal(node = this.root){
+        PostorderTraversal(node = this.root){
             if(node.value !== 0){
                 this.PreorderTraversal(node.left);
                 this.PreorderTraversal(node.right);
@@ -58,7 +58,7 @@ export const func = (opt) => {
             }
         }
 
-        PostorderTraversal(node = this.root){
+        PreorderTraversal(node = this.root){
             if(node.value !== 0){
                 // console.log(node.value);
                 res.push(node.value);
@@ -108,27 +108,58 @@ export const func = (opt) => {
     Tree.init();
     
     console.log(nodes);
-    if((Tree.Validate())[0]){
-        switch(opt){
-            case 1:
-                console.log("Inorder Traversal");
-                Tree.InorderTraversal();
-                break;
-            case 2:
-                console.log("Preorder Traversal");
-                Tree.PreorderTraversal();
-                break;
-            case 3:
-                console.log("Postorder Traversal");
-                Tree.PostorderTraversal();
-                break;
-        }
+    
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            if((Tree.Validate())[0]){
+                switch(opt){
+                    case 1:
+                        console.log("Inorder Traversal");
+                        Tree.InorderTraversal();
+                        break;
+                    case 2:
+                        console.log("Preorder Traversal");
+                        Tree.PreorderTraversal();
+                        break;
+                    case 3:
+                        console.log("Postorder Traversal");
+                        Tree.PostorderTraversal();
+                        break;
+                }
+    
+                resolve([1,res]);
+    
+            }else{
+                resolve([0, count]);
+            }
+        }, 200);
+    })
 
-        return [1,res];
+    
+        // return new Promise((resolve) => {
+        //     if((Tree.Validate())[0]){
+        //         switch(opt){
+        //             case 1:
+        //                 console.log("Inorder Traversal");
+        //                 Tree.InorderTraversal();
+        //                 break;
+        //             case 2:
+        //                 console.log("Preorder Traversal");
+        //                 Tree.PreorderTraversal();
+        //                 break;
+        //             case 3:
+        //                 console.log("Postorder Traversal");
+        //                 Tree.PostorderTraversal();
+        //                 break;
+        //         }
 
-    }else{
-        return [0, count];
-    }
+        //         resolve([1,res]);
+
+        //     }else{
+        //         resolve([0, count]);
+        //     }
+        // });
+    
 
 
 }

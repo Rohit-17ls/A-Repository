@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './UserConsole.module.css';
 import Copy from '../Icons/Copy';
+import Spinner from './Spinner';
 
 
 const UserConsole = (props) => {
@@ -16,7 +17,8 @@ const UserConsole = (props) => {
             <section className= {classes.consoleHolder} id={"userConsole"}>
                 <div className={classes.console}>
                     <div className={classes.consoleHeader}><h3 style={{fontWeight : 'bold'}}>Console : </h3>{!props.message[0] || <button onClick={copyToClipboard}><Copy/></button>}</div>
-                    <pre id={"results"} style={{color: !props.message[0] ? 'red' : 'white'}}>{props.message[1]}</pre>
+                    {props.loading ?  (<Spinner/>) : <pre id={"results"} style={{color: !props.message[0] ? 'red' : 'white'}}>{props.message[1]}</pre>}
+                    
                 </div>
             </section>
         </>
