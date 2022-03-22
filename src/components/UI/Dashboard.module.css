@@ -11,6 +11,9 @@
     transition: all 0.25s ease-in;
     box-shadow:inset 0px 0px 6px 0px #0dcaf079;
     border-radius:1vmax;
+    position:sticky;
+    top:0;
+    z-index:4;
     
     /* color:white; */
     /* position: fixed; */

@@ -8,6 +8,7 @@ import Dashboard from './components/UI/Dashboard';
 import UserConsole from './components/UI/UserConsole';
 import {func} from './Logic/TreeMethods'
 import { CDriverCode } from './Logic/CDriver';
+import DummyData from './components/UI/DummyData';
 
 
 // import { ThemeConsumer } from 'styled-components';
@@ -211,7 +212,7 @@ const App = () => {
         {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
       <Dashboard treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
-
+      <DummyData/>
      
 
     </>
