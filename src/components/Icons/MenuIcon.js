@@ -8,7 +8,7 @@ const MenuIcon = (props) => {
 
     let clicked = () => {
         initWidth = !initWidth ? -100 : 0;
-        console.log("Here");
+        // console.log("Here");
         props.expandSidebar(initWidth);
         
     }
