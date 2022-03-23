@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Navbar from './components/UI/Navbar';
 import TreeParentBody from './components/TreeStructure/TreeParentBody';
 import TreeRow from './components/TreeStructure/TreeRow';
@@ -68,6 +68,7 @@ let nodeIds = ['node1'];
 let treeheight = 1;
 // let nodeRank = 0;
 let currentHeightNodes = [];
+let expanded = false;
 
 
 const App = () => {
@@ -84,6 +85,7 @@ const App = () => {
   const [height, setHeight] = useState([0,1]);
   const [dummy, setDummy] = useState(0);
   const [loading, setLoading] = useState(false);
+  const dashRef = useRef();
   let currentPair = [0,1];
   let  nodes = 0;
   console.log("Hi");
@@ -118,6 +120,7 @@ const App = () => {
   
   
   const invertBinaryTree = () => {
+    expandSidebar(-100);
     console.log(tree);
     for(let i=0; i<(height.length); i+=2){
       swap(i,(2*i)+1);
@@ -144,7 +147,7 @@ const App = () => {
   
 
   const addRow = () => {
-   
+    expandSidebar(-100);
     setHeight(prevState => [...height, height.at(height.length-1)*2]);
     currentPair = [0,1];
 
@@ -152,6 +155,7 @@ const App = () => {
   }
 
   const toggleNullState = () => {
+    expandSidebar(-100);
     let newState = nullState==="Show" ? "Hide" : "Show";
     for(let i=0; i<nodes; i++){
       if(!tree[indices[i]].value){
@@ -175,6 +179,7 @@ const App = () => {
 
   const treeActionFunction = async(opt) => {
     // console.log("Hey");
+    expandSidebar(-100);
     setLoading(true);
     let res = await func(opt);
     console.log("result",);
@@ -200,18 +205,24 @@ const App = () => {
     }
   }
 
+  const expandSidebar = (newWidth) => {
+    dashRef.current.style.transform = `translateX(${newWidth}%)`;
+  }
+
+
+
   CDriverCode();
 
   return (
     <>
-      <Navbar addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
+      <Navbar expandSidebar={expandSidebar} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
+      <Dashboard dashRef={dashRef} expanded={expanded} treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
       <UserConsole message={consoleMessage} loading={loading}/>
       <TreeParentBody>
         <Message message={'Please provide non-zero values for each node (Nodes with 0 value will be treated as null) and also do balance the Binary Tree'}/>
         {/* <TreeRow></TreeRow> */}
         {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
-      <Dashboard treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
       <DummyData/>
      
 
