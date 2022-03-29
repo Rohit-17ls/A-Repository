@@ -9,6 +9,7 @@ import UserConsole from './components/UI/UserConsole';
 import {func} from './Logic/TreeMethods'
 import { CDriverCode } from './Logic/CDriver';
 import DummyData from './components/UI/DummyData';
+import Footer from './components/TreeStructure/Footer';
 
 
 // import { ThemeConsumer } from 'styled-components';
@@ -100,8 +101,8 @@ const App = () => {
   // const left = 0;
 
   if(lastUnbalancedNode){
-    console.log(lastUnbalancedNode)
-    console.log(element);
+    // console.log(lastUnbalancedNode)
+    // console.log(element);
     let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
     element.style.background = 'red'; 
   }
@@ -109,7 +110,7 @@ const App = () => {
 
   const swap = (i,j) => {
     if(i<j){
-      console.log(i,j);
+      // console.log(i,j);
       const temp = tree[indices[j]].value;
       console.log('temp', temp);
       tree[indices[j]].value =  tree[indices[i]].value;
@@ -121,7 +122,7 @@ const App = () => {
   
   const invertBinaryTree = () => {
     expandSidebar(-100);
-    console.log(tree);
+    // console.log(tree);
     for(let i=0; i<(height.length); i+=2){
       swap(i,(2*i)+1);
     }
@@ -147,6 +148,7 @@ const App = () => {
   
 
   const addRow = () => {
+    console.log("Adding Row");
     expandSidebar(-100);
     setHeight(prevState => [...height, height.at(height.length-1)*2]);
     currentPair = [0,1];
@@ -163,7 +165,7 @@ const App = () => {
       }
     }
     setNullState(newState);
-    console.log(tree);
+    // console.log(tree);
 
   
   }
@@ -192,7 +194,7 @@ const App = () => {
       let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
       // element.style.background = 'red';
       element.classList.add('errorNode');
-      console.log(element);
+      // console.log(element);
       
       
       
@@ -207,6 +209,7 @@ const App = () => {
 
   const expandSidebar = (newWidth) => {
     dashRef.current.style.transform = `translateX(${newWidth}%)`;
+    console.log(newWidth ? "Slid out" : "Slid in");
   }
 
 
@@ -216,14 +219,17 @@ const App = () => {
   return (
     <>
       <Navbar expandSidebar={expandSidebar} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
-      <Dashboard dashRef={dashRef} expanded={expanded} treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/>
+      {/* <Dashboard dashRef={dashRef} expanded={expanded} treeActionFunction={treeActionFunction} addRow={addRow} toggleNullState={toggleNullState} nullState={nullState} invertBinaryTree={invertBinaryTree}/> */}
+      <Dashboard dashRef={dashRef} expanded={expanded} nullState={nullState}  addRow={addRow} actions={[addRow,() => {treeActionFunction(1)},() => {treeActionFunction(2)},() => {treeActionFunction(3)}, invertBinaryTree, toggleNullState]}/>
+
       <UserConsole message={consoleMessage} loading={loading}/>
       <TreeParentBody>
         <Message message={'Please provide non-zero values for each node (Nodes with 0 value will be treated as null) and also do balance the Binary Tree'}/>
         {/* <TreeRow></TreeRow> */}
         {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
-      <DummyData/>
+      {/* <DummyData/> */}
+      <Footer/>
      
 
     </>

@@ -16,7 +16,7 @@
     z-index:4;
     /* padding-bottom:1vmax; */
     background:linear-gradient(157deg,#000, #072026,#000);
-    /* transform: translateX(-100%); */
+    transform: translateX(-100%);
     
     /* color:white; */
     /* position: fixed; */
@@ -47,4 +47,26 @@ span.header{
 .dashboardControls a{
     color:white;
     text-decoration: 0px;
+}
+
+.utilites{
+    color:white;
+    /* margin-top:1em;
+    margin-bottom:1em; */
+}
+
+.utility{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width:auto;
+    height:fit-content;
+    /* background:green; */
+    margin: 5% 10%;
+}
+
+
+input[type="checkbox"]{
+    border:none;   
+    margin-left:5%;
 }

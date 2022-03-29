@@ -3,7 +3,7 @@
     /* height:13vh; */
     height:7vmax;
     /* position:fixed; */
-    background:linear-gradient(90deg, #0db2e4 40%, #166e87 89%);;
+    background:linear-gradient(90deg, #0db2e4 40%, #166e87 89%);
     color:white;
     display:grid;
     grid-template-columns:1.3fr 2fr;

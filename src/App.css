@@ -20,6 +20,15 @@ input::-webkit-inner-spin-button {
 }
 
 
+body{
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  display:grid;
+  grid-template-rows:auto;
+
+}
+
 html:focus-within{
   scroll-behavior: smooth;
 }
