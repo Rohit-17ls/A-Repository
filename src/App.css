@@ -37,3 +37,14 @@ input.errorNode{
   box-shadow: 0 2px 2px 2px red;
   background: red;
 }
+
+
+#editor{
+  width:95%;
+  border:2px solid white;
+}
+
+
+#editor::selection{
+  background-color: transparent;
+}

@@ -10,6 +10,7 @@ import {func} from './Logic/TreeMethods'
 import { CDriverCode } from './Logic/CDriver';
 import DummyData from './components/UI/DummyData';
 import Footer from './components/TreeStructure/Footer';
+import Editor from './components/UI/Editor';
 
 
 // import { ThemeConsumer } from 'styled-components';
@@ -228,6 +229,7 @@ const App = () => {
         {/* <TreeRow></TreeRow> */}
         {height.map(x => <><TreeRow rootValue={tree['node-0-0'].value} setId={setId} inputChangeHandler={inputChangeHandler} key={Math.random()*1000}  pairs={x} rootId={rootId}/><TreeSandwich pairs={x} endif={height.at(height.length-1)}/></>)}
       </TreeParentBody>
+      <Editor/>
       {/* <DummyData/> */}
       <Footer/>
      

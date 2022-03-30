@@ -1,0 +1,88 @@
+.editor{
+    font-size: 1rem;
+    display: flex;
+    width:80%;
+    height:60vmax;
+    margin:auto;
+    flex-direction: column;
+    /* border:2px solid white; */
+
+}
+
+.languageBar{
+    margin:1% 1% 0 1%;
+    background: linear-gradient(157deg,#000, #072026,#000);
+    color:white;
+    width:98%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding:0rem;
+    box-shadow: 0px 0px 9px deepskyblue;
+    transform: translateY(20%);
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+}
+
+.icons{
+    display: grid;
+    grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+    
+    
+}
+
+.locked{
+    width:98%;
+    background: #011627;
+    display: flex;
+    box-shadow: 0px 0px 9px deepskyblue;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    margin: 0 auto;
+    color: deepskyblue;
+    font-size: 3rem;
+    font-weight: bolder;
+    
+}
+
+
+.locked svg{
+    margin-bottom: 2rem;
+}
+
+
+.icon{
+    box-shadow: 0px 0px 2px 2px deepskyblue;
+    background: linear-gradient(157deg,#000, #072026,#000);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.icon:hover{
+    background: linear-gradient(-157deg,#000, #072026,#000);
+    /* background: red; */
+}
+
+
+.copy{
+    margin: auto;
+}
+
+.editor::selection{
+    background-color: rgba(245, 245, 245, 0.315);
+}
+
+
+.edit{
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0px 0px 9px deepskyblue;
+    padding : 1.5rem 1rem 1rem 1rem;
+    width:98%;
+    margin:0 1% 1% 1%;
+    overflow-y: scroll;
+
+}
+

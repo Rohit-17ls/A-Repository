@@ -5,7 +5,7 @@ const InstagramIcon = () => {
 
     return (
         <>
-    <svg width="132.004" height={132}><link xmlns type="text/css" rel="stylesheet" id="dark-mode-custom-link" /><link xmlns type="text/css" rel="stylesheet" id="dark-mode-general-link" /><style xmlns lang="en" type="text/css" id="dark-mode-custom-style" dangerouslySetInnerHTML={{__html: "" }} /><style xmlns lang="en" type="text/css" id="dark-mode-native-style" dangerouslySetInnerHTML={{__html: "" }} />
+    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="132.004" height={132}><link xmlns type="text/css" rel="stylesheet" id="dark-mode-custom-link" /><link xmlns type="text/css" rel="stylesheet" id="dark-mode-general-link" /><style xmlns lang="en" type="text/css" id="dark-mode-custom-style" dangerouslySetInnerHTML={{__html: "" }} /><style xmlns lang="en" type="text/css" id="dark-mode-native-style" dangerouslySetInnerHTML={{__html: "" }} />
         <defs>
           <linearGradient id="b">
             <stop offset={0} stopColor="#3771c8" />
