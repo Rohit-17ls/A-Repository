@@ -86,16 +86,3 @@ export default Dashboard;
 
 
 
-{/* <a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(1)}}>Inorder Traversal</Button></a>
-<a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(2)}}>Preorder Traversal</Button></a>
-<a href="#userConsole"><Button type="button" onClick={() => {props.treeActionFunction(3)}}>Postorder Traversal</Button></a>
-*/}
-
-
-
-{/* <Button type="button" onClick={props.addRow}>Add a new row</Button>
-<Button type="button" onClick={props.toggleNullState}>{props.nullState} Empty Nodes</Button>
-<Button type="button" onClick={props.invertBinaryTree}>Invert Binary Tree</Button>
-<Button type="button" onClick={props.addRow}>Add a new row</Button>
-<Button type="button" onClick={props.toggleNullState}>{props.nullState} Empty Nodes</Button>
-<Button type="button" onClick={props.invertBinaryTree}>Invert Binary Tree</Button> */}

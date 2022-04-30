@@ -1,5 +1,4 @@
 import React from 'react';
-import InstagramIcon from '../Icons/InstagramIcon';
 import classes from './Footer.module.css';
 
 

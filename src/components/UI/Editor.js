@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useMemo} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import hljs from 'highlight.js/lib/core';
 import c from 'highlight.js/lib/languages/c';
 import 'highlight.js/styles/night-owl.css';
@@ -52,6 +52,8 @@ const Editor = () => {
             case 3:
                 console.log("Javascript");
                 setDriverCode(false);
+                break;
+            default:
                 break;
             }
     },[language])

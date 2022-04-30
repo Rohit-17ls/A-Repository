@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Navbar.module.css';
-import Button from './Button';
 import MenuIcon from '../Icons/MenuIcon';
 
 

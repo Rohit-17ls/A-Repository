@@ -125,6 +125,8 @@ export const func = (opt) => {
                         console.log("Postorder Traversal");
                         Tree.PostorderTraversal();
                         break;
+                    default:
+                        break;
                 }
     
                 resolve([1,res]);

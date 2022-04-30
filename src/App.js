@@ -8,7 +8,6 @@ import Dashboard from './components/UI/Dashboard';
 import UserConsole from './components/UI/UserConsole';
 import {func} from './Logic/TreeMethods'
 import { CDriverCode } from './Logic/CDriver';
-import DummyData from './components/UI/DummyData';
 import Footer from './components/TreeStructure/Footer';
 import Editor from './components/UI/Editor';
 
@@ -55,21 +54,11 @@ export let tree = {
   
   let indices = ['node-1-0', 'node-1-1', 'node-2-0', 'node-2-1', 'node-2-2', 'node-2-3', 'node-3-0', 'node-3-1', 'node-3-2', 'node-3-3', 'node-3-4', 'node-3-5', 'node-3-6', 'node-3-7', 'node-4-0', 'node-4-1', 'node-4-2', 'node-4-3', 'node-4-4', 'node-4-5', 'node-4-6', 'node-4-7', 'node-4-8', 'node-4-9', 'node-4-10', 'node-4-11', 'node-4-12', 'node-4-13', 'node-4-14', 'node-4-15'];
   
-  let root = {
-    parent : null,
-    id : 'node-0-0',
-    value : 0,
-    left : '00',
-    right : '01'
-  }
+  
 let rootId = 'node-0-0';
 let lastUnbalancedNode = null;
 
-let nodeIds = ['node1'];
 
-let treeheight = 1;
-// let nodeRank = 0;
-let currentHeightNodes = [];
 let expanded = false;
 
 
@@ -82,7 +71,6 @@ const App = () => {
   
   // const [rows, setRows] = useState([0,1]);
   const [nullState, setNullState] = useState("Hide");
-  const [nullVisibility, setNullVisibility] = useState('');
   const [consoleMessage, setConsoleMessage] = useState([0,'']);
   const [height, setHeight] = useState([0,1]);
   const [dummy, setDummy] = useState(0);
@@ -90,7 +78,7 @@ const App = () => {
   const dashRef = useRef();
   let currentPair = [0,1];
   let  nodes = 0;
-  console.log("Hi");
+  console.log(dummy);
   // const [currentPair, setCurrentPair] = useState([0,1]);
   // const [tree, setTree] = useState([]);
   
