@@ -1,9 +1,10 @@
 .editor{
     font-size: 1rem;
     display: flex;
-    width:80%;
-    height:60vmax;
+    width:100%;
+    height:max-content;
     margin:auto;
+    margin-bottom: 10vh;
     flex-direction: column;
     /* border:2px solid white; */
 
@@ -86,3 +87,12 @@
 
 }
 
+.editorContainer{
+    width: 70%;
+    height: fit-content;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30vh;
+    /* border: 1px solid white; */
+}

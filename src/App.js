@@ -79,19 +79,13 @@ const App = () => {
   let currentPair = [0,1];
   let  nodes = 0;
   console.log(dummy);
-  // const [currentPair, setCurrentPair] = useState([0,1]);
-  // const [tree, setTree] = useState([]);
-  
-  
-  // let tree = [];
   
   
   
-  // const left = 0;
+  
+  
 
   if(lastUnbalancedNode){
-    // console.log(lastUnbalancedNode)
-    // console.log(element);
     let element = document.querySelector(`input[data-id=${indices[lastUnbalancedNode]}]`);
     element.style.background = 'red'; 
   }

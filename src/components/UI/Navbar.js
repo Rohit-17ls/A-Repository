@@ -13,7 +13,7 @@ const Navbar = (props) => {
             <div className={classes.navbar}>
             {/* <span  onClick={expandSidebar}><MenuIcon/></span> */}
             <MenuIcon expandSidebar={props.expandSidebar}/>
-                <span className={classes.header}>Broccoli <small style={{fontSize:'0.7em'}}>by Unamed Inc</small></span>
+                <span className={classes.header}>Broccoli-net</span>
             {/* <Button type="button" onClick={props.addRow}>Add new row</Button>
             <Button type="button" onClick={props.toggleNullState}>{props.nullState} Empty Nodes</Button>
             <Button type="button" onClick={props.invertBinaryTree}>Invert Binary Tree</Button> */}

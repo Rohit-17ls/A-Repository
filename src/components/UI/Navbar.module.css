@@ -1,8 +1,5 @@
 .navbar{
     width:100%;
-    /* height:13vh; */
-    height:7vmax;
-    /* position:fixed; */
     background:linear-gradient(90deg, #0db2e4 40%, #166e87 89%);
     color:white;
     display:grid;

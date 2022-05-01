@@ -9,6 +9,9 @@ import GoLanguageIcon from '../Icons/GoLanguageIcon';
 import JSLanguageIcon from '../Icons/JSLangaugeIcon';
 import Copy from '../Icons/Copy';
 import Locked from '../Icons/Locked';
+import Button from './Button';
+// import { CDriverCode } from '../../Logic/CDriver';
+import { starter } from '../../Logic/CDriver';
 
 const obj = [{langName:'C', langCode:'c'}, {langName:'C++', langCode:'cpp'}, {langName:'Go', langCode:'go'}, {langName:'Javascript', langCode:'js'} ];
 
@@ -18,28 +21,16 @@ const Editor = () => {
     
     
     const codeBlockRef = useRef();
+    const codeContainerRef = useRef();
     const [language, setLanguage] = useState(0);
-    const [driverCode, setDriverCode] = useState(`#include <stdio.h>\n#include <stdlib.h>\n\nint main(int argc, char *argv[]){\n\treturn 0;\n\n}`);
-    // console.log(driverCode);
+    const [driverCode, setDriverCode] = useState(starter);
     // const editorRef = useRef();
     
-    useEffect(() => {
-        if(driverCode!==false){
-            console.log("used effect");
-            hljs.registerLanguage('c', c);
-            hljs.highlightElement(codeBlockRef.current);
-
-        }
-        
-
-    },[driverCode]);
-
-
     useEffect(() => {
         switch(language){
             case 0:
                 console.log("C");
-                setDriverCode(`#include <stdio.h>\n#include <stdlib.h>\n\nint main(int argc, char *argv[]){\n\treturn 0;\n\n}`);
+                setDriverCode(starter);
                 break;
             case 1:
                 console.log("C++");
@@ -55,38 +46,68 @@ const Editor = () => {
                 break;
             default:
                 break;
-            }
+        }
     },[language])
+    
+    useEffect(() => {
+        // console.log(driverCode);
+        if(driverCode!==false){
+            // codeBlockRef.current.innerText = starter;
+            console.log(codeBlockRef.current.innerText);
+            hljs.registerLanguage('c', c);
+            hljs.highlightElement(codeBlockRef.current);
+
+        }
+        
+
+    },[driverCode]);
+
+
+
+    const getDriverCode = () => {
+        console.log(`Getting the driver in ${obj[language].langName}`);
+        // let txt = CDriverCode();
+        setDriverCode(starter);
+        
+    }
+
 
     
 
     return (<>
 
-        <div id="editor" className={classes.editor}> 
-        {/* style={{border:'2px solid white'}}> */}
-        <div className={classes.languageBar}>
-            <div className={classes.icons}>
-                <span className={classes.icon} style={{background : language===0 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(0)}><CLanguageIcon/></span>
-                <span className={classes.icon} style={{background : language===1 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(1)}><CPPLanguageIcon/></span>
-                <span className={classes.icon} style={{background : language===2 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(2)}><GoLanguageIcon/></span>
-                <span className={classes.icon} style={{background : language===3 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(3)}><JSLanguageIcon/></span>
+        <section className={classes.editorContainer}>
+            <div id="editor" className={classes.editor}> 
+            {/* style={{border:'2px solid white'}}> */}
+            <div className={classes.languageBar}>
+                <div className={classes.icons}>
+                    <span className={classes.icon} style={{background : language===0 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(0)}><CLanguageIcon/></span>
+                    <span className={classes.icon} style={{background : language===1 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(1)}><CPPLanguageIcon/></span>
+                    <span className={classes.icon} style={{background : language===2 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(2)}><GoLanguageIcon/></span>
+                    <span className={classes.icon} style={{background : language===3 ? 'linear-gradient(-157deg,#072026, #0e667c,#072026)' : 'linear-gradient(157deg,#000, #072026,#000)'}} onClick = {() => setLanguage(3)}><JSLanguageIcon/></span>
+                </div>
+                <div className={classes.copy} onClick={() => {navigator.clipboard.writeText(codeBlockRef.current.innerText)}}>
+                    <Copy/>
+                </div>
             </div>
-            <div className={classes.copy} onClick={() => {navigator.clipboard.writeText(codeBlockRef.current.innerText)}}>
-                <Copy/>
+
+
+            {!driverCode && <div className={classes.locked}><Locked/>Coming Soon in {obj[language].langName} !!!</div>}
+
+            {driverCode && <pre ref={codeBlockRef} className={`hljs language-c ${classes.edit}`}>
+                <code ref={codeContainerRef}>
+                    {driverCode}
+
+
+                </code>
+            </pre>}
             </div>
-        </div>
+           <div style={{margin:'auto'}}>
+            <Button type="button" onClick={getDriverCode}>Generate Driver</Button>
+           </div>
+        </section>
 
 
-        {!driverCode && <div className={classes.locked}><Locked/>Coming Soon in {obj[language].langName} !!!</div>}
-
-        {driverCode && <pre ref={codeBlockRef} className={`hljs language-c ${classes.edit}`}>
-            <code>
-                {driverCode}
-
-
-            </code>
-        </pre>}
-        </div>
 
 
 

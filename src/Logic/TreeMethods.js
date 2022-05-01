@@ -1,6 +1,6 @@
 import {tree} from "../App";
 
-export const func = (opt) => {
+export const func = (opt, driver=false) => {
     
     let  nodeLeftPos, nodeRightPos, nodes = [];
     let res = [];
@@ -106,6 +106,8 @@ export const func = (opt) => {
     let Tree = new BinarySearchTree(ele);
     Tree.start();
     Tree.init();
+
+    if(driver) return Tree;
     
     console.log(nodes);
     
